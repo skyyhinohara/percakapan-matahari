@@ -1,8 +1,31 @@
 
 import { Button } from "@/components/ui/button";
-import { Globe, WifiHigh, Network, Computer } from "lucide-react";
+import { Globe, WifiHigh, Network, Computer, Check } from "lucide-react";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in', 'opacity-100');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((elem) => {
+      elem.classList.add('opacity-0');
+      observer.observe(elem);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header/Navigation */}
@@ -53,22 +76,126 @@ const Index = () => {
       {/* Layanan Section */}
       <section id="layanan" className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Layanan Kami</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12 animate-on-scroll">Layanan Kami</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow animate-on-scroll">
               <WifiHigh className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold mb-3">Internet Rumah</h3>
               <p className="text-gray-600">Paket internet rumah dengan kecepatan tinggi untuk kebutuhan streaming dan gaming.</p>
             </div>
-            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow animate-on-scroll">
               <Network className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold mb-3">Internet Bisnis</h3>
               <p className="text-gray-600">Solusi koneksi dedicated untuk kebutuhan bisnis dengan SLA terjamin.</p>
             </div>
-            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow animate-on-scroll">
               <Computer className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-semibold mb-3">Solusi Enterprise</h3>
               <p className="text-gray-600">Layanan korporat dengan dukungan teknis 24/7 dan infrastruktur terdepan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12 animate-on-scroll">Paket Internet</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Basic Package */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden animate-on-scroll">
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Paket Basic</h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-blue-600">Rp 299K</span>
+                  <span className="text-gray-500">/bulan</span>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Kecepatan up to 30 Mbps</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Unlimited Kuota</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Support 24/7</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="p-4 bg-gray-50">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">Pilih Paket</Button>
+              </div>
+            </div>
+
+            {/* Pro Package */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden animate-on-scroll border-2 border-blue-600 transform scale-105">
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Paket Pro</h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-blue-600">Rp 499K</span>
+                  <span className="text-gray-500">/bulan</span>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Kecepatan up to 50 Mbps</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Unlimited Kuota</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Support 24/7 Prioritas</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>IP Static</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="p-4 bg-gray-50">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">Pilih Paket</Button>
+              </div>
+            </div>
+
+            {/* Business Package */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden animate-on-scroll">
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Paket Business</h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-blue-600">Rp 999K</span>
+                  <span className="text-gray-500">/bulan</span>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Kecepatan up to 100 Mbps</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Unlimited Kuota</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Support 24/7 Dedicated</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>IP Static</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>SLA 99.9%</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="p-4 bg-gray-50">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">Pilih Paket</Button>
+              </div>
             </div>
           </div>
         </div>
