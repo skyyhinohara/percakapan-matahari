@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -9,6 +8,10 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { AboutUs } from "@/components/sections/AboutUs";
 import { InternetExplanation } from "@/components/sections/InternetExplanation";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { InternetPackages } from "@/components/sections/InternetPackages";
+import { FAQ } from "@/components/sections/FAQ";
+import { StreamingServices } from "@/components/sections/StreamingServices";
+import { ConnectWithUs } from "@/components/sections/ConnectWithUs";
 
 const Index = () => {
   useEffect(() => {
@@ -41,7 +44,10 @@ const Index = () => {
       <AboutUs />
       <Services />
       <WhyChooseUs />
-      <Pricing />
+      <StreamingServices />
+      <InternetPackages />
+      <ConnectWithUs />
+      <FAQ />
       <ContactForm />
       <Footer />
     </div>

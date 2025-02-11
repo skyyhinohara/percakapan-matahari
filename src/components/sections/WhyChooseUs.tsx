@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { Shield, Clock, HeartHandshake, Wifi } from "lucide-react";
+import { Shield, Clock, HeartHandshake, Wifi, Infinity } from "lucide-react";
 
 export const WhyChooseUs = () => {
   const reasons = [
@@ -23,6 +22,11 @@ export const WhyChooseUs = () => {
       icon: <Wifi className="w-12 h-12 text-blue-500" />,
       title: "Teknologi Terkini",
       description: "Menggunakan perangkat dan teknologi terbaru"
+    },
+    {
+      icon: <Infinity className="w-12 h-12 text-blue-500" />,
+      title: "Bebas FUP",
+      description: "Nikmati internet tanpa batas kuota dan tanpa FUP selamanya"
     }
   ];
 
@@ -37,22 +41,42 @@ export const WhyChooseUs = () => {
         >
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Mengapa Memilih Kami?</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Kami berkomitmen memberikan layanan internet terbaik dengan dukungan infrastruktur modern dan tim profesional yang berpengalaman.
+            Kami berkomitmen memberikan layanan internet terbaik dengan dukungan infrastruktur modern dan tim profesional yang berpengalaman. 
+            Nikmati kebebasan berinternet tanpa batasan kuota dan FUP.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              whileHover={{ 
+                y: -10,
+                scale: 1.02,
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+              transition={{ 
+                type: "spring",
+                stiffness: 300,
+                damping: 20
+              }}
+              className="p-6 bg-white rounded-xl shadow-md border-2 border-transparent hover:border-blue-500"
             >
-              <div className="mb-4">{reason.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{reason.title}</h3>
-              <p className="text-gray-600">{reason.description}</p>
+              <div className="flex flex-col items-center text-center">
+                <motion.div 
+                  className="mb-4"
+                  whileHover={{ 
+                    rotate: [0, -10, 10, -10, 0],
+                    transition: { duration: 0.5 }
+                  }}
+                >
+                  {reason.icon}
+                </motion.div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{reason.title}</h3>
+                <p className="text-gray-600">{reason.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
