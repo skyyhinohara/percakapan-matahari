@@ -6,6 +6,9 @@ import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Pricing } from "@/components/sections/Pricing";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { AboutUs } from "@/components/sections/AboutUs";
+import { InternetExplanation } from "@/components/sections/InternetExplanation";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 
 const Index = () => {
   useEffect(() => {
@@ -34,7 +37,10 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <Hero />
+      <InternetExplanation />
+      <AboutUs />
       <Services />
+      <WhyChooseUs />
       <Pricing />
       <ContactForm />
       <Footer />

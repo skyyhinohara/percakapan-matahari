@@ -13,9 +13,11 @@ export const Hero = () => {
             <p className="text-lg text-gray-600 mb-8">
               Nikmati layanan internet broadband berkualitas tinggi untuk rumah dan bisnis Anda dengan PT Paket Switch Bersama.
             </p>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-lg px-8">
-              Mulai Berlangganan
-            </Button>
+            <a href="#pricing">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-lg px-8">
+                Mulai Berlangganan
+              </Button>
+            </a>
           </div>
           <div className="md:w-1/2">
             <img 

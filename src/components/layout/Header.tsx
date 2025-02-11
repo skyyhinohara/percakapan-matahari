@@ -29,7 +29,14 @@ export const Header = () => {
             <a href="#pricing" className="block md:inline text-gray-600 hover:text-blue-600">Paket</a>
             <a href="#kontak" className="block md:inline text-gray-600 hover:text-blue-600">Kontak</a>
           </nav>
-          <Button className="hidden md:inline-flex bg-blue-600 hover:bg-blue-700">Hubungi Kami</Button>
+          <a 
+            href="https://wa.me/6281234567890" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex"
+          >
+            <Button className="bg-blue-600 hover:bg-blue-700">Hubungi Kami</Button>
+          </a>
         </div>
       </div>
     </header>
