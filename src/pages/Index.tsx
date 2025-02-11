@@ -1,9 +1,12 @@
-
 import { Button } from "@/components/ui/button";
-import { Globe, WifiHigh, Network, Computer, Check } from "lucide-react";
-import { useEffect } from "react";
+import { Globe, WifiHigh, Network, Computer, Check, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1
@@ -26,6 +29,10 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header/Navigation */}
@@ -36,13 +43,18 @@ const Index = () => {
               <Globe className="h-6 w-6 text-blue-600" />
               <span className="text-xl font-bold text-gray-800">PT Paket Switch Bersama</span>
             </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#beranda" className="text-gray-600 hover:text-blue-600">Beranda</a>
-              <a href="#layanan" className="text-gray-600 hover:text-blue-600">Layanan</a>
-              <a href="#tentang" className="text-gray-600 hover:text-blue-600">Tentang Kami</a>
-              <a href="#kontak" className="text-gray-600 hover:text-blue-600">Kontak</a>
+            <div className="md:hidden">
+              <button onClick={toggleMenu} className="text-gray-600">
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+            <nav className={`${isMenuOpen ? 'block' : 'hidden'} md:flex absolute md:relative top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-lg md:shadow-none p-4 md:p-0 space-y-4 md:space-y-0 md:space-x-8`}>
+              <a href="#beranda" className="block md:inline text-gray-600 hover:text-blue-600">Beranda</a>
+              <a href="#layanan" className="block md:inline text-gray-600 hover:text-blue-600">Layanan</a>
+              <a href="#pricing" className="block md:inline text-gray-600 hover:text-blue-600">Paket</a>
+              <a href="#kontak" className="block md:inline text-gray-600 hover:text-blue-600">Kontak</a>
             </nav>
-            <Button className="bg-blue-600 hover:bg-blue-700">Hubungi Kami</Button>
+            <Button className="hidden md:inline-flex bg-blue-600 hover:bg-blue-700">Hubungi Kami</Button>
           </div>
         </div>
       </header>
@@ -64,7 +76,7 @@ const Index = () => {
             </div>
             <div className="md:w-1/2">
               <img 
-                src="/placeholder.svg" 
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80" 
                 alt="Internet Service"
                 className="w-full h-auto rounded-lg shadow-lg"
               />
@@ -110,6 +122,12 @@ const Index = () => {
                   <span className="text-4xl font-bold text-blue-600">Rp 299K</span>
                   <span className="text-gray-500">/bulan</span>
                 </div>
+                <div className="mb-6">
+                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '20%' }}></div>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-2">Kecepatan 30 Mbps</p>
+                </div>
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <Check className="h-5 w-5 text-green-500 mr-2" />
@@ -137,6 +155,12 @@ const Index = () => {
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-blue-600">Rp 499K</span>
                   <span className="text-gray-500">/bulan</span>
+                </div>
+                <div className="mb-6">
+                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '40%' }}></div>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-2">Kecepatan 50 Mbps</p>
                 </div>
                 <ul className="space-y-3">
                   <li className="flex items-center">
@@ -170,6 +194,12 @@ const Index = () => {
                   <span className="text-4xl font-bold text-blue-600">Rp 999K</span>
                   <span className="text-gray-500">/bulan</span>
                 </div>
+                <div className="mb-6">
+                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: '80%' }}></div>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-2">Kecepatan 100 Mbps</p>
+                </div>
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <Check className="h-5 w-5 text-green-500 mr-2" />
@@ -197,6 +227,53 @@ const Index = () => {
                 <Button className="w-full bg-blue-600 hover:bg-blue-700">Pilih Paket</Button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="kontak" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12 animate-on-scroll">Hubungi Kami</h2>
+          <div className="max-w-2xl mx-auto">
+            <form className="space-y-6 animate-on-scroll">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan nama lengkap"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan email"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Nomor Telepon</label>
+                <input
+                  type="tel"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Masukkan nomor telepon"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Pesan</label>
+                <textarea
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 h-32"
+                  placeholder="Tulis pesan Anda"
+                ></textarea>
+              </div>
+              <div>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">Kirim Pesan</Button>
+              </div>
+            </form>
           </div>
         </div>
       </section>
