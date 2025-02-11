@@ -3,27 +3,27 @@ import { motion } from "framer-motion";
 const streamingServices = [
   {
     name: "Netflix",
-    logo: "/streaming/netflix.png",
+    logo: "/streaming/netflix.jpg",
   },
   {
     name: "Prime Video",
-    logo: "/streaming/prime.png",
+    logo: "/streaming/prime.jpg",
   },
   {
     name: "YouTube",
-    logo: "/streaming/youtube.png",
+    logo: "/streaming/youtube.jpg",
   },
   {
     name: "HBO Max",
-    logo: "/streaming/hbo.png",
+    logo: "/streaming/hbo.jpg",
   },
   {
     name: "Apple TV",
-    logo: "/streaming/apple-tv.png",
+    logo: "/streaming/apple-tv.jpg",
   },
   {
     name: "Disney+",
-    logo: "/streaming/disney.png",
+    logo: "/streaming/disney.jpg",
   },
 ];
 
