@@ -20,7 +20,6 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Perusahaan</h4>
             <ul className="space-y-2 text-gray-400">
               <li>Tentang Kami</li>
-              <li>Karir</li>
               <li>Kontak</li>
             </ul>
           </div>
@@ -28,13 +27,12 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Kontak</h4>
             <ul className="space-y-2 text-gray-400">
               <li>Email: info@paketswitch.id</li>
-              <li>Tel: (021) 1234-5678</li>
-              <li>WhatsApp: 0812-3456-7890</li>
+              <li>WhatsApp: 0821-7788-7757</li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 PT Paket Switch Bersama. Hak Cipta Dilindungi.</p>
+          <p>&copy; 2025 PT Paket Switch Bersama. Hak Cipta Dilindungi.</p>
         </div>
       </div>
     </footer>
